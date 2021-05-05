@@ -1,36 +1,37 @@
-//template literals
+//arrays 
 
-const namer  = 'andreas';
-const age = 30;
-const job  = 'web dev';
-const city = 'miami';
+const numbers = [1,2,8,45,34,634];
+const numbers2 = new Array(5,5,27,23,34,2);
 
-//without template literals
+const fruit = ["apple", ' banana', 'orange', 'pear'];
+const mixed = ['hello', 1, true, null,{a:1, g:4}, new Date()];
 
-htmlline = '<ul><li>Name:' + namer + '</li><li>Name:' + job + '</li><li>Name:' + city + '</li></ul>' ;
+let val;
+val = numbers.length;
+val = Array.isArray(numbers);
+val = numbers[3];
+val = numbers.indexOf(8);
+numbers.push(250); //back
+numbers.unshift(120);   //front
+numbers.pop();    
+numbers.shift();
+numbers.splice(0,3);    //start and end to remove particular 
+numbers.reverse();
 
-htmlline = '<ul>' + 
-'<li>Name:' + namer + '</li>' + 
-'<li>age:' + age + '</li>' + 
-'<li>job:' + job + '</li>' + 
-'<li>city:' + city + '</li>' + 
-'<ul>';
+//concatenate array.
+val = numbers.concat(numbers2);
+val = fruit.sort();
 
-function hello(){
-  return 'hello';
+//compare function
+val = numbers.sort((function (x,y) {
+  return y-x;
+  
+}))
+
+function under50(num) {
+  return num < 50;
 }
 
-//template string  this is gold
-
-//conditionals inside the variable is possible 
-htmlline = `
-<ul>
-<li> Name:  ${namer} </li>
-<li> age:  ${age} </li>
-<li> job: ${job} </li>
-<li> city: ${city} </li>
-<li> ${2+2}</li>
-<li> ${hello()}</li>
-<ul> `;
-
- document.body.innerHTML = htmlline;
+val = numbers.find(under50);
+console.log(numbers);
+console.log(val);
