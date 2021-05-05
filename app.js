@@ -1,27 +1,36 @@
-const firstName = 'Andreas';
-const lastName = 'Gotter';
+//template literals
 
-const stringer = 'hello there my name is lorry';
-const tags  = 'web design, web dev';
+const namer  = 'andreas';
+const age = 30;
+const job  = 'web dev';
+const city = 'miami';
 
-let val ;
-val = 'his name is ' + firstName + ' '+ lastName;
+//without template literals
 
-//escaping very imp
-val = 'that\'s awesome i can\'t wait' ;
+htmlline = '<ul><li>Name:' + namer + '</li><li>Name:' + job + '</li><li>Name:' + city + '</li></ul>' ;
 
-val = firstName.concat(' ',lastName);
+htmlline = '<ul>' + 
+'<li>Name:' + namer + '</li>' + 
+'<li>age:' + age + '</li>' + 
+'<li>job:' + job + '</li>' + 
+'<li>city:' + city + '</li>' + 
+'<ul>';
 
-//change case
-val = firstName.toUpperCase();
-val = firstName.indexOf('s');
-val = firstName.lastIndexOf('s');   //if not there then  -1 is returned
-val = firstName.charAt('2');
-val = firstName.charAt(firstName.length -1);
-val = firstName.substring(0,3);   //same as slice, slice is used with arrays
-val = firstName.slice(-3);
+function hello(){
+  return 'hello';
+}
 
-val = stringer.split(' ');    //brilliant to do data input changes
-val = stringer.replace('hello', 'bye');
-val = stringer.includes('hola');
-console.log(val);
+//template string  this is gold
+
+//conditionals inside the variable is possible 
+htmlline = `
+<ul>
+<li> Name:  ${namer} </li>
+<li> age:  ${age} </li>
+<li> job: ${job} </li>
+<li> city: ${city} </li>
+<li> ${2+2}</li>
+<li> ${hello()}</li>
+<ul> `;
+
+ document.body.innerHTML = htmlline;
