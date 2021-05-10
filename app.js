@@ -1,39 +1,50 @@
-//function declaratoin
 
+// const input = prompt();
+// window.alert(input);
 
-function greet(firstName = 'John', lastName = ' Doe') { //function defaults here
-  return 'hello ' + firstName + lastName;
-}
+//confirm
 
-console.log(greet('John',' asdfads'));
-console.log(greet());
-
-
-//function exporessions 
-//here the function is anaoónymous but the function is assigned to the variable and one can then access the variable as if it were a function. 
-
-const increment  = function (_initial =0) {
-
-  return _initial + 1;
+// if (confirm('are you sure')) {
+//   console.log("yes");
   
-}
-
-console.log(increment(44));
-
-//Immediately invokable functions IIFE or inline ones 
-//these must end with a paranthesis
-(function (name) {
-  console.log("hello " + name);
-})('Brad');
+// }
+// else
+// {
+//   console.log('no');
+// }
 
 
-//property functions (methods of objects)
+let val;
 
-const divya ={    //const only declares that divya will be an object
+// val = window.outerHeight;
+// val =window.outerWidth;
+// val = window.innerWidth;
 
-  cry : function () {
-    console.log("whaaa teamviewer is not working");
-  }
-}
+val =window.scrollY;
 
-divya.cry();
+val =window.location.href;
+val =window.location.host;
+val =window.location.search;
+
+//redirect
+// window.location.href = "http://www.google.com"
+
+//reload
+// window.location.reload();
+
+//history
+// window.history.go(-3); //go to last nth website
+
+// val = window.history.length;
+
+
+val =window.navigator;
+val = window.navigator.appVersion;
+
+val =window.navigator.platform;
+
+val =window.navigator.vendor;
+
+val = window.navigator.language;
+
+console.log(val);
