@@ -1,50 +1,46 @@
-
-// const input = prompt();
-// window.alert(input);
-
-//confirm
-
-// if (confirm('are you sure')) {
-//   console.log("yes");
-  
-// }
-// else
-// {
-//   console.log('no');
-// }
-
-
 let val;
 
-// val = window.outerHeight;
-// val =window.outerWidth;
-// val = window.innerWidth;
+// val = document.all[0];
 
-val =window.scrollY;
+// val = document.body;
 
-val =window.location.href;
-val =window.location.host;
-val =window.location.search;
+// val = document.doctype;
+// val = document.URL;
 
-//redirect
-// window.location.href = "http://www.google.com"
-
-//reload
-// window.location.reload();
-
-//history
-// window.history.go(-3); //go to last nth website
-
-// val = window.history.length;
+// val = document.domain;
 
 
-val =window.navigator;
-val = window.navigator.appVersion;
+// val =document.forms;
 
-val =window.navigator.platform;
+// val = document.forms[0].id;
+// val = document.forms[0].method;
 
-val =window.navigator.vendor;
+val =document.links;
 
-val = window.navigator.language;
+val =document.links[0];
+val =document.links[0].id;
+
+val =document.scripts;
+
+
+val =document.links[0];
+
+val =document.links[0].className;
+
+val =document.links[0].classList[0];
+
+val =document.images;
+
+val =document.scripts;
+val= document.scripts[2].getAttribute('src');
+
+let scripts = document.scripts;
+
+scripts.array.forEach(function (scrpit) {
+
+  console.log(script);
+  
+});
+
 
 console.log(val);
