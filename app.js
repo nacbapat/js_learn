@@ -1,46 +1,37 @@
-let val;
+// document.getElementById();
 
-// val = document.all[0];
+//get things from the element
+console.log(document.getElementById('task-title'));
+console.log(document.getElementById('task-title').id);
+console.log(document.getElementById('task-title').className);
 
-// val = document.body;
+//change styling
+document.getElementById('task-title').style.background = "#333";
+document.getElementById('task-title').style.color = '#fff';
+document.getElementById('task-title').style.padding = '5px';
+//change the content
+document.getElementById('task-title').textContent = 'Task List';
+document.getElementById('task-title').innerText = 'My tasks';
 
-// val = document.doctype;
-// val = document.URL;
+//use const 
+const tasktitle = document.getElementById('task-title');
+tasktitle.innerHTML = '<span style="color:red"> My tasks </span>';
 
-// val = document.domain;
+//query selector new !
 
+console.log(document.querySelector('#task-title'));
+console.log(document.querySelector('.card-title'));
+console.log(document.querySelector('h5'));  //only the first one is fetched
 
-// val =document.forms;
+document.querySelector('li').style.color = 'red';
+document.querySelector('li:last-child').style.color = 'blue';   //css pseudo class li:last-child
 
-// val = document.forms[0].id;
-// val = document.forms[0].method;
-
-val =document.links;
-
-val =document.links[0];
-val =document.links[0].id;
-
-val =document.scripts;
-
-
-val =document.links[0];
-
-val =document.links[0].className;
-
-val =document.links[0].classList[0];
-
-val =document.images;
-
-val =document.scripts;
-val= document.scripts[2].getAttribute('src');
-
-let scripts = document.scripts;
-
-scripts.array.forEach(function (scrpit) {
-
-  console.log(script);
-  
-});
+document.querySelector('li:nth-child(3)').style.color = 'yellow';
 
 
-console.log(val);
+document.querySelector('li:nth-child(4)').textContent= 'change';
+
+
+document.querySelector('li:nth-child(odd)').textContent= 'odd';//takes only the first odd / even not all for this use the queryselectorAll function
+
+
