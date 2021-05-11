@@ -1,37 +1,44 @@
-// document.getElementById();
+// document.getElementsByClassName
 
-//get things from the element
-console.log(document.getElementById('task-title'));
-console.log(document.getElementById('task-title').id);
-console.log(document.getElementById('task-title').className);
+const items = document.getElementsByClassName('collection-item');
 
-//change styling
-document.getElementById('task-title').style.background = "#333";
-document.getElementById('task-title').style.color = '#fff';
-document.getElementById('task-title').style.padding = '5px';
-//change the content
-document.getElementById('task-title').textContent = 'Task List';
-document.getElementById('task-title').innerText = 'My tasks';
+console.log(items);
+items[0].innerHTML = "hello";
+items[3].textContent = '3';
+console.log(typeof items);
 
-//use const 
-const tasktitle = document.getElementById('task-title');
-tasktitle.innerHTML = '<span style="color:red"> My tasks </span>';
+const listitems = document.querySelector('ul').getElementsByClassName('collection-item');
 
-//query selector new !
+console.log(listitems);
 
-console.log(document.querySelector('#task-title'));
-console.log(document.querySelector('.card-title'));
-console.log(document.querySelector('h5'));  //only the first one is fetched
+//convert html collection to array
 
-document.querySelector('li').style.color = 'red';
-document.querySelector('li:last-child').style.color = 'blue';   //css pseudo class li:last-child
+let  lis = document.getElementsByTagName('li');
+lis = Array.from(lis); 
+console.log(typeof lis);
 
-document.querySelector('li:nth-child(3)').style.color = 'yellow';
+lis.forEach(element => {
+  console.log(element);
+});   //lis is now an array
 
+lis.forEach(function (loopElement,index) {
+  console.log(loopElement.className,index);
+  loopElement.textContent = `${index} ${loopElement.className}`;
+  
+})
 
-document.querySelector('li:nth-child(4)').textContent= 'change';
+let items_all = document.querySelectorAll('li.collection-item');    //return an nodelist directly
 
+items_all.forEach(function (element,index) {
+  console.log(`element is ${element} ${index}`);
+  
+})
+console.log(items_all);
 
-document.querySelector('li:nth-child(odd)').textContent= 'odd';//takes only the first odd / even not all for this use the queryselectorAll function
+const liOdd = document.querySelectorAll('li:nth-child(odd)');
+liOdd.forEach(function (element,index) {      //use a for loop to be safe, works always
+  element.style.background = "#ccc";
+  
+})
 
-
+const liEven = document.querySelectorAll('li:nth-child(even)');
