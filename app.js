@@ -1,44 +1,51 @@
-// document.getElementsByClassName
+let val ;
 
-const items = document.getElementsByClassName('collection-item');
+const list = document.querySelector('ul.collection');
+var listitem = document.querySelector('li.collection-item');  //will select first one 
+var listitem = document.querySelector('li.collection-item:first-child');  
 
-console.log(items);
-items[0].innerHTML = "hello";
-items[3].textContent = '3';
-console.log(typeof items);
+val = list;
 
-const listitems = document.querySelector('ul').getElementsByClassName('collection-item');
+//get child nodes
+val = list.childNodes;  //this will return node list
 
-console.log(listitems);
+//get children    //more used !!
+val = list.children;    //this will return html collection
 
-//convert html collection to array
+// 1 element
+//2 - atribute
+// 3 - text node      //this is the line bread
+// 8 -comment
+//9 - document itself
+// 10 -doctype
 
-let  lis = document.getElementsByTagName('li');
-lis = Array.from(lis); 
-console.log(typeof lis);
+val = list.childNodes[0].nodeName;
+val = list.childNodes[1].nodeType;
 
-lis.forEach(element => {
-  console.log(element);
-});   //lis is now an array
+val = list.children[1].textContent = 'changed text';
+//children of children
+list.children[3].children[0].id = 'new-id';
+val = list.children[3].children[0];
 
-lis.forEach(function (loopElement,index) {
-  console.log(loopElement.className,index);
-  loopElement.textContent = `${index} ${loopElement.className}`;
-  
-})
+//first
+val = list.firstChild;    //text node
+val = list.firstElementChild; //actual element //more used
 
-let items_all = document.querySelectorAll('li.collection-item');    //return an nodelist directly
+//last
+val = list.lastChild;    //text node
+val = list.lastElementChild; //actual element //more used
 
-items_all.forEach(function (element,index) {
-  console.log(`element is ${element} ${index}`);
-  
-})
-console.log(items_all);
+//count the child elements
+val =list.childElementCount;
 
-const liOdd = document.querySelectorAll('li:nth-child(odd)');
-liOdd.forEach(function (element,index) {      //use a for loop to be safe, works always
-  element.style.background = "#ccc";
-  
-})
+//get parent node
+val = listitem.parentElement;
+val =listitem.parentElement.parentElement
+//sibing
+val =listitem.nextSibling;    //this will catch line breaks
+val =listitem.nextElementSibling; //this will eliminate the line breaks
 
-const liEven = document.querySelectorAll('li:nth-child(even)');
+
+// console.log(listitem);
+console.log(val);
+
