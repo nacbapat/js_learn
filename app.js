@@ -43,3 +43,12 @@ link.classList.add('test');
 link.classList.add('remove');
 
 console.log(val);
+
+//attr
+val = link.getAttribute('href');
+val = link.setAttribute('href','http://google.com')
+val = link.hasAttribute('href');
+val = link.setAttribute('title','google');
+val = link.removeAttribute('title');
+
+console.log(val);
