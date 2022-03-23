@@ -1,54 +1,45 @@
-//REPLACE
+const clearTasks1 = document.getElementsByClassName('clear-tasks');
+//or
+// const clearTasks2 = document.querySelector('.clear-tasks'); //when using queryselector pass the class name like in CSS
 
-//create element
-const newHeading = document.createElement('h2');
-//Add id 
-newHeading.id = 'task-title';
-newHeading.appendChild(document.createTextNode('Task List'));
+// console.log(clearTasks2);
 
-//get old heading
-
-const oldHeading = document.getElementById('task-title');
-
-//parent
-const cardAction = document.querySelector('.card-action');
-
-//replace
-cardAction.replaceChild(newHeading,oldHeading)
-
-//remove element
-const lis = document.querySelectorAll('li')
-const list = document.querySelector('ul');
-
-// remove list item
-lis[0].remove();
-
-list.removeChild(lis[3]);
-
-//get classes and attributes of individual childresn
+// const clearTasks3 = document.querySelector('.clear-tasks').addEventListener('click',function (e) {
+//   console.log('hello world'); 
+//   //e.preventDefault(); same as using href="#"
+// }); 
 
 
-//classes
-const firstLi = document.querySelector('li:first-child');
-console.log(firstLi.children[0]);
+const clearTasks3 = document.querySelector('.clear-tasks').addEventListener('click',onClick); 
 
-const link = firstLi.children[0];
+function onClick(e) {
+  //console.log('clicked');
 
-let val;
+  let val;
 
-val = link.className;
-val = link.classList;
+  val = e;
+  val = e.target;
+  val = e.target.id;
+  val = e.target.className;
+  val = e.target.classList;
+  e.target.innerText = 'HEllo';
+  console.log(val)
 
-link.classList.add('test');
-link.classList.add('remove');
+  //event type
 
-console.log(val);
+  val = e.type;
+  console.log(val)
 
-//attr
-val = link.getAttribute('href');
-val = link.setAttribute('href','http://google.com')
-val = link.hasAttribute('href');
-val = link.setAttribute('title','google');
-val = link.removeAttribute('title');
+  //timestamp
+  val = e.timestamp;
+  val = e.clientY;
+  val = e.clientX;
+  val = e.offsetY;    //relative to button
+  val = e.offsetX;
+  
+  console.log(val)
 
-console.log(val);
+  
+
+  
+}
