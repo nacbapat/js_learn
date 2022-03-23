@@ -24,3 +24,22 @@ const list = document.querySelector('ul');
 lis[0].remove();
 
 list.removeChild(lis[3]);
+
+//get classes and attributes of individual childresn
+
+
+//classes
+const firstLi = document.querySelector('li:first-child');
+console.log(firstLi.children[0]);
+
+const link = firstLi.children[0];
+
+let val;
+
+val = link.className;
+val = link.classList;
+
+link.classList.add('test');
+link.classList.add('remove');
+
+console.log(val);
