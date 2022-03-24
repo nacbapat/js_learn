@@ -1,23 +1,26 @@
-const clearBtn = document.querySelector('.clear-tasks');
-const card = document.querySelector('.card');
+const form = document.querySelector('form');
+const taskInput = document.getElementById('task');
 const heading = document.querySelector('h5');
+form.addEventListener('submit',runEvent);
 
-clearBtn.addEventListener('click',runEvent);
-clearBtn.addEventListener('dblclick',runEvent);
-clearBtn.addEventListener('mousedown',runEvent);
-clearBtn.addEventListener('mouseup',runEvent);
-clearBtn.addEventListener('mouseenter',runEvent);
-clearBtn.addEventListener('mouseleave',runEvent);
-clearBtn.addEventListener('mouseout',runEvent); //if there are any elements inside the button then this will be treiggered with leaving that element
-card.addEventListener('mouseout',runEvent); //if there are any elements inside the button then this will be treiggered with leaving that element
+// taskInput.addEventListener('keydown',runEvent);
+// taskInput.addEventListener('keyup',runEvent);
+taskInput.addEventListener('keypress',runEvent);
+taskInput.addEventListener('focus',runEvent); //inside of an object
+taskInput.addEventListener('blur',runEvent); //outside of an object after clicking it 
+taskInput.addEventListener('cut',runEvent); //cut 
+taskInput.addEventListener('paste',runEvent); //paste 
+taskInput.addEventListener('change',runEvent); //used on select lists 
 
-
-
-
-//event handler
 
 function runEvent(e) {
-  console.log(`Event Type: ${e.type}`);
-  heading.innerHTML = `mouseX: ${e.offsetX} mousey: ${e.offsetY}`;
-  document.body.style.backgroundColor = `rgb(${e.offsetX},${e.offsetY},40)`;
+
+   console.log(`Event type: ${e.type}`);
+  // e.preventDefault();
+  // console.log(taskInput.value);
+  // taskInput.value = ' ';
+
+  console.log(e.target.value);
+  heading.innerText = e.target.value;
+
 }
