@@ -1,17 +1,28 @@
-class Person {
+class Person{
   constructor(firstname,lastname){
     this.firstname = firstname;
     this.lastname = lastname;
   }
 
   greeting(){
-    return ` Hello ${this.firstname} ${this.lastname}`;
+    return `hello ${this.firstname} ${this.lastname}`
   }
-
-  static addnumber(x,y){return x+y;}
 }
 
-const mary = new Person('mary','higgins');
-console.log(mary.greeting())
-// console.log(mary.addnumber(1,2));   //error
-console.log(Person.addnumber(1,2));
+class Customer extends Person {
+  constructor(firstname,lastname,phone,membership){
+    super(firstname,lastname);    //class the parent class constructor
+
+    this.phone = phone;
+    this.membership = membership;
+  }
+
+  static getMemebershipcost() {return 500;}
+}
+
+const john = new Customer('oioert','huiqwf',65,'444-698-4665');
+
+console.log(john.greeting())    //inherted greeting
+
+
+console.log(Customer.getMemebershipcost());
