@@ -1,18 +1,35 @@
-const name2 = new String('dihk');
-name2.foo = 'bar';
-
-console.log(name2,typeof(name2));
-
-if (name2 === 'dihk') {   //this compares the type and the string (which is the value here)
-  console.log('yes')
+// Person constructor
+function Person(firstName, lastName, dob) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.birthday = new Date(dob);
+  // this.calculateAge = function(){            //move it to prototyp
+  //   const diff =  Date.now() - this.birthday.getTime();
+  //   const ageDate = new Date(diff);
+  //   return Math.abs(ageDate.getUTCFullYear() - 1970);
+  // }
 }
-else{
-  console.log('no')
+
+//calculate age
+
+Person.prototype.calculateAge = function(){
+  const diff =  Date.now() - this.birthday.getTime();
+  const ageDate = new Date(diff);
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
 }
 
-//regex
+// Get full name
+Person.prototype.getFullName = function(){
+  return `${this.firstName} ${this.lastName}`;
+}
 
-const re1 = /\w+/;    //a regex lies between two //   / ...here comes the regex betw 2 backslashes...  /
-const re2 = RegExp('\\w+');   //when using single quotes ''  the backslash has to be used for the regex
+// Gets Married
+Person.prototype.getsMaried = function(newLastName){
+  this.lastName = newLastName;
+}
 
-console.log(re1,re2)
+
+const john = new Person('John', 'Doe', '8-12-90');
+const mary = new Person('Mary', 'Johnson', 'March 20 1978');
+
+console.log(john.calculateAge());
