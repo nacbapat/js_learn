@@ -1,22 +1,17 @@
-const personPrototypes = {
-  greeting: function() {
-    return `Hello there ${this.firstname} ${this.lastName}`;
-  },
-
-  getsMarried: function(lastname){
-    this.lastName = lastname;
+class Person {
+  constructor(firstname,lastname){
+    this.firstname = firstname;
+    this.lastname = lastname;
   }
+
+  greeting(){
+    return ` Hello ${this.firstname} ${this.lastname}`;
+  }
+
+  static addnumber(x,y){return x+y;}
 }
 
-
-const mary = Object.create(personPrototypes);
-mary.firstname = 'MAry';
-mary.lastName = 'asdf';
-
-console.log(mary);
-
-const brad = Object.create(personPrototypes,{
-  firstname: {value: 'peter'},
-  lastName: {value: 'pfeiffer'},
-  age: {value:36}
-});
+const mary = new Person('mary','higgins');
+console.log(mary.greeting())
+// console.log(mary.addnumber(1,2));   //error
+console.log(Person.addnumber(1,2));
