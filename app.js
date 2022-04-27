@@ -1,24 +1,18 @@
-const add = {
-  name: 'Nachiket',
-  age: '30'
+const name2 = new String('dihk');
+name2.foo = 'bar';
+
+console.log(name2,typeof(name2));
+
+if (name2 === 'dihk') {   //this compares the type and the string (which is the value here)
+  console.log('yes')
+}
+else{
+  console.log('no')
 }
 
-//constructor
-//Person Constructor
+//regex
 
-function Person(nameIn,dob) {
-  this.name = nameIn;
-  this.birthday = new Date(dob);
-  this.getAge = function () {
-    const diff = Date.now() - this.birthday;
-    const ageDate = new Date(diff);
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
-  }
-  console.log(this);    //return self 
-}
+const re1 = /\w+/;    //a regex lies between two //   / ...here comes the regex betw 2 backslashes...  /
+const re2 = RegExp('\\w+');   //when using single quotes ''  the backslash has to be used for the regex
 
-const nachi = new Person('nachiket',30);
-const brad = new Person('brad','9-10-1981');
-
-console.log(nachi.name);  //like c++
-console.log("brad birtda ",brad.birthday,brad.getAge());
+console.log(re1,re2)
