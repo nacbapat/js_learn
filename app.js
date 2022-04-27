@@ -1,6 +1,15 @@
-document.getElementById('loan-form').addEventListener('submit',calculateResults);
+document.getElementById('loan-form').addEventListener('submit',function (e) {
+    //hide results
+    document.getElementById('results').style.display = 'none';
+    //show loader
+    document.getElementById('loading').style.display = 'block';
 
-function calculateResults(e) {
+    setTimeout(calculateResults, 2000);
+
+    e.preventDefault(); 
+});
+
+function calculateResults() {
     console.log('Calculating...');
     const amount  = document.getElementById('amount');
     const interest  = document.getElementById('interest');
@@ -22,15 +31,22 @@ function calculateResults(e) {
         monthlyPayment.value = monthly.toFixed(2);
         totalPayment.value = (monthly*calculatePayments).toFixed(2);
         totalInterest.value = ((monthly*calculatePayments)-principal).toFixed(2);
+
+        document.getElementById('results').style.display = 'block';
+
+        document.getElementById('loading').style.display = 'none';
     }
     else{
         showError('Please check your numbers');    
     }
-
-    e.preventDefault();
 }
 
 function showError(error){
+
+
+    document.getElementById('results').style.display = 'block';
+
+    document.getElementById('loading').style.display = 'none';
 
     const errorDiv = document.createElement('div');
 
@@ -46,7 +62,6 @@ function showError(error){
     card.insertBefore(errorDiv,heading);
 
     //clear error afater 3s
-
     setTimeout(clearError,2000);
 
 }
