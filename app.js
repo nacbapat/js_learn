@@ -1,71 +1,83 @@
-document.getElementById('loan-form').addEventListener('submit',function (e) {
-    //hide results
-    document.getElementById('results').style.display = 'none';
-    //show loader
-    document.getElementById('loading').style.display = 'block';
+/*
+GAME FUNCTION:
+- Player must guess a number between a min and max
+- Player gets a certain amount of guesses
+- Notify player of guesses remaining
+- Notify the player of the correct answer if loose
+- Let player choose to play again
+*/
 
-    setTimeout(calculateResults, 2000);
+// Game values
+let min = 1,
+    max = 10,
+    winningNum = 2,
+    guessesLeft = 3;
 
-    e.preventDefault(); 
+// UI Elements
+const game = document.querySelector('#game'),
+      minNum = document.querySelector('.min-num'),
+      maxNum = document.querySelector('.max-num'),
+      guessBtn = document.querySelector('#guess-btn'),
+      guessInput = document.querySelector('#guess-input'),
+      message = document.querySelector('.message');
+
+// Assign UI min and max
+minNum.textContent = min;
+maxNum.textContent = max;
+      
+// Listen for guess
+guessBtn.addEventListener('click', function(){
+  let guess = parseInt(guessInput.value);
+  
+  // Validate
+  if(isNaN(guess) || guess < min || guess > max){
+    setMessage(`Please enter a number between ${min} and ${max}`, 'red');
+  }
+
+  // Check if won
+  if(guess === winningNum){
+    // Game over - won
+    gameOver(true, `${winningNum} is correct, YOU WIN!`);
+
+  } else {
+    // Wrong number
+    guessesLeft -= 1;
+
+    if(guessesLeft === 0){
+      // Game over - lost
+      gameOver(false, `Game Over, you lost. The correct number was ${winningNum}`);
+    } else {
+      // Game continues - answer wrong
+
+      // Change border color
+      guessInput.style.borderColor = 'red';
+
+      // Clear Input
+      guessInput.value = '';
+
+      // Tell user its the wrong number
+      setMessage(`${guess} is not correct, ${guessesLeft} guesses left`, 'red');
+    }
+  }
 });
 
-function calculateResults() {
-    console.log('Calculating...');
-    const amount  = document.getElementById('amount');
-    const interest  = document.getElementById('interest');
-    const years  = document.getElementById('years');
-    const monthlyPayment = document.getElementById('monthly-payment');
-    const totalPayment = document.getElementById('total-payment');
-    const totalInterest = document.getElementById('total-interest');
+// Game over
+function gameOver(won, msg){
+  let color;
+  won === true ? color = 'green' : color = 'red';
 
-    const principal = parseFloat(amount.value);
-    const calculatedInterest = parseFloat(interest.value) / 100 / 12 ;
-    const calculatePayments = parseFloat(years.value) * 12;
-
-    //compute monthly payments
-
-    const x = Math.pow(1+ calculatedInterest,calculatePayments);
-    const monthly = (principal*x*calculatedInterest)/(x-1);
-
-    if (isFinite(monthly)) {
-        monthlyPayment.value = monthly.toFixed(2);
-        totalPayment.value = (monthly*calculatePayments).toFixed(2);
-        totalInterest.value = ((monthly*calculatePayments)-principal).toFixed(2);
-
-        document.getElementById('results').style.display = 'block';
-
-        document.getElementById('loading').style.display = 'none';
-    }
-    else{
-        showError('Please check your numbers');    
-    }
+  // Disable input
+  guessInput.disabled = true;
+  // Change border color
+  guessInput.style.borderColor = color;
+  // Set text color
+  message.style.color = color;
+  // Set message
+  setMessage(msg);
 }
 
-function showError(error){
-
-
-    document.getElementById('results').style.display = 'block';
-
-    document.getElementById('loading').style.display = 'none';
-
-    const errorDiv = document.createElement('div');
-
-    const card  = document.querySelector('.card');
-    const heading = document.querySelector('.heading');
-
-    //add class
-    errorDiv.className = 'alert alert-danger';
-    //create text node
-    errorDiv.appendChild(document.createTextNode(error));
-
-    //insert above heading
-    card.insertBefore(errorDiv,heading);
-
-    //clear error afater 3s
-    setTimeout(clearError,2000);
-
-}
-
-function clearError() {
-    document.querySelector('.alert').remove();
+// Set message
+function setMessage(msg, color){
+  message.style.color = color;
+  message.textContent = msg;
 }
